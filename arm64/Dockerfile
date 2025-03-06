@@ -1,10 +1,11 @@
 # tinyDotNet ARM AOT Builder
 
 ARG SDK=9.0
-ENV SDK=${SDK}
-ENV ARCH=arm64
 
 FROM mcr.microsoft.com/dotnet/sdk:${SDK} AS builder
+
+ENV SDK=${SDK}
+ENV ARCH=arm64
 
 ENV PROTOBUF_PROTOC=/usr/bin/protoc
 ENV gRPC_PluginFullPath=/usr/bin/grpc_csharp_plugin
