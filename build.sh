@@ -2,9 +2,9 @@
 
 # Place this file in your .NET project directory. It doesn't matter where.
 # Optionally include the Dockerfile. Without, the default image will be pulled from GitHub.
-# Optionally inclide a copyTo.sh, to copy the executable to a device.
+# Optionally include a copyTo.sh, to copy the executable to a device.
 
-PROJECT_NAME="" #if you leave this empty, dotnet will try to build the whole solution.
+PROJECT_NAME="" #Project Name (without .csproj extension). If you leave this empty, dotnet will try to build the whole solution (and may error).
 SDK="9.0"
 ARCH="arm64"
 OUTPUT="/bin/$ARCH"
