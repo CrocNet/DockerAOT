@@ -34,4 +34,4 @@ RUN chmod +x /startup.sh
 
 ENV DOTNET_CLI_HOME=/src
 
-CMD ["/startup.sh"]
+ENTRYPOINT ["/startup.sh"]

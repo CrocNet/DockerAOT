@@ -4,7 +4,7 @@
 # Optionally include the Dockerfile. Without, the default image will be pulled from GitHub.
 # Optionally inclide a copyTo.sh, to copy the executable to a device.
 
-PROJECT_NAME=""
+PROJECT_NAME="" #if you leave this empty, dotnet will try to build the whole solution.
 SDK="9.0"
 ARCH="arm64"
 OUTPUT="/bin/$ARCH"
@@ -12,7 +12,7 @@ OUTPUT="/bin/$ARCH"
 
 # If Dockerfile is present, then use that.  Otherwise, use image from GitHub
 if [ -f "Dockerfile" ]; then
-  IMAGE="tinydotnet-builder-arm64"
+  IMAGE="tinydotnet-AOT-$ARCH-$SDK"
   
   # Check if "build" is in arguments or build-dotnet-arm64 image doesn't exist
   if [[ "$*" == *"build"* ]] || ! docker images | grep -q $IMAGE; then
@@ -22,6 +22,7 @@ if [ -f "Dockerfile" ]; then
   
 else
   IMAGE="ghcr.io/dottinynet/dockeraot:$ARCH-$SDK"
+  docker pull $IMAGE
 fi
 
 
@@ -51,12 +52,11 @@ set +e
 
 OUTPUTPATH=$PROJECTPATH/$OUTPUT
 
-rm -f $OUTPUTEXE*
-docker run --rm -it --net=host -u $(id -u):$(id -g) -v $PROJECTPATH:/src $IMAGE startup.sh $PROJECT_NAME
+rm -f $OUTPUTPATH*
+docker run --rm -it --net=host -u $(id -u):$(id -g) -v $PROJECTPATH:/src $IMAGE $PROJECT_NAME
 
 # ----- Optional Copy 
 
 if [ -f "copyTo.sh" ]; then
   source copyTo.sh $@
 fi
-
