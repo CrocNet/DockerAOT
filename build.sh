@@ -21,7 +21,7 @@ if [ -f "Dockerfile" ]; then
   fi  
   
 else
-  IMAGE="github."
+  IMAGE="ghcr.io/dottinynet/dockeraot:$ARCH-$SDK"
 fi
 
 

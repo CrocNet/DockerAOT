@@ -33,8 +33,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./ARM64  # Changed from '.' to './ARM64'
+          context: ./arm64
           push: true
           build-args: |
             SDK=${{ matrix.sdk }}
-          tags: ghcr.io/dottinynet/dockeraot:${{ github.ref_name }}-sdk${{ matrix.sdk }}
+          tags: ghcr.io/dottinynet/dockeraot:arm64-${{ matrix.sdk }}
