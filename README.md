@@ -1,6 +1,6 @@
-# dotTinyNet DockerAOT
+# DockerAOT
 
-dotTinyNet Ahead-of-Time compilation compiler
+.NET Ahead-of-Time compilation compiler
 
 **Supports:**
  .NET 8
@@ -30,4 +30,9 @@ Optionally copy and edit `copyTo.sh` to copy the executable to your device.
     
 #### To Build
 
-    ./build.sh
+    ./build.sh [IP address]
+
+#### copyTo.sh
+
+If you want to automatically copy your build to a remote device, place a copyTo.sh script in the same directory.  This will be called, after build.sh completes.
+Any arguments you give to build.sh, will be passed to copyTo.sh.  Use ours as a template.
