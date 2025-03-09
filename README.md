@@ -18,7 +18,7 @@
 Copy `build.sh` to your .NET project directory.  It can be in the project root, or
 sub directory.
 
-    wget https://raw.githubusercontent.com/dotTinyNet/DockerAOT/refs/heads/main/build.sh
+    wget https://raw.githubusercontent.com/CrocNet/DockerAOT/refs/heads/main/build.sh
     chmod +x build.sh
 
 Edit the file, and change the SDK to match the .NET version.
