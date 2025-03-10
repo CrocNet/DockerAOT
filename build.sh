@@ -51,8 +51,10 @@ if [ -n "$PROJECTPATH" ]; then
 set +e
 
 OUTPUTPATH=$PROJECTPATH/$OUTPUT
+OUTPUTEXE=$PROJECTPATH/$OUTPUT/$PROJECT
 
-rm -f $OUTPUTPATH*
+rm $OUTPUTEXE*
+
 docker run --rm -it --net=host -u $(id -u):$(id -g) -v $PROJECTPATH:/src $IMAGE $PROJECT_NAME
 
 # ----- Optional Copy 
